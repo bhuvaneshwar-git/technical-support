@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Netgear Support Mind Map</title>
+<style>
+:root{--bg:#eef1f5;--fg:#1a2230;--mut:#5b6678;--card:#fff;--line:#d3d9e2;--acc:#0b6e8a;--accbg:#e1f1f6;--hd:#0f2a3a;--ok:#1e8a4c;--warn:#d98a00;--bad:#c93a3a;--off:#8a93a3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151c;--fg:#e5e9f0;--mut:#9aa5b6;--card:#1a212b;--line:#353f4e;--acc:#5cc3df;--accbg:#16303a;--hd:#0a1822}}
+:root[data-theme="dark"]{--bg:#10151c;--fg:#e5e9f0;--mut:#9aa5b6;--card:#1a212b;--line:#353f4e;--acc:#5cc3df;--accbg:#16303a;--hd:#0a1822}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 "Segoe UI",system-ui,Arial,sans-serif}
+header{background:var(--hd);color:#fff;padding:22px 16px;text-align:center}
+header h1{margin:0 0 4px;font-size:22px}
+header p{margin:0;color:#b8c7d3;font-size:14px}
+.wrap{max-width:1100px;margin:auto;padding:20px 16px 40px}
+h2{font-size:18px;margin:22px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+button{font:inherit;color:inherit;cursor:pointer}
+.card{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:14px;text-align:left}
+.card:hover,.card.on{border-color:var(--acc)}
+.card.on{background:var(--accbg)}
+.card b{display:block;margin-bottom:2px}
+.card span{font-size:13px;color:var(--mut)}
+.flow{background:var(--card);border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.08);margin-top:18px}
+.crumb{font-size:13px;color:var(--mut);margin-bottom:8px}
+.q{background:var(--accbg);border:2px solid var(--acc);border-radius:10px;padding:14px;margin:8px 0 14px}
+.q b{font-size:17px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.opt{display:flex;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:10px;padding:14px;text-align:left}
+.opt:hover{border-color:var(--acc)}
+.opt.g{border-left-color:var(--ok)}.opt.a{border-left-color:var(--warn)}.opt.r{border-left-color:var(--bad)}.opt.o{border-left-color:var(--off)}
+.dot{width:14px;height:14px;border-radius:50%;flex:none;background:var(--acc)}
+.g .dot{background:var(--ok)}.a .dot{background:var(--warn)}.r .dot{background:var(--bad)}.o .dot{background:var(--off)}
+.sol{border:1px solid var(--line);border-left:6px solid var(--ok);border-radius:10px;padding:16px;margin-top:8px}
+.sol h3{margin:0 0 4px;font-size:19px}
+.sol h4{margin:14px 0 4px;color:var(--acc);font-size:15px}
+.sol ol{margin:4px 0;padding-left:22px}
+.sol li{margin:3px 0}
+.kbid{display:inline-block;background:var(--accbg);color:var(--acc);border-radius:5px;padding:1px 8px;font-size:13px;font-weight:600}
+.kbbox{margin-top:16px;border:1px dashed var(--line);border-radius:10px;padding:12px;font-size:14px}
+.kbbox a,.kbc a{color:var(--acc);font-weight:600}
+.ctl{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.ctl button{padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--bg)}
+.ctl .pri{background:var(--acc);border-color:var(--acc);color:#fff}
+#srch{width:100%;max-width:420px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);font:inherit;margin-bottom:12px}
+.kbc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;text-align:left}
+.kbc b{display:block;margin:4px 0 2px;font-size:15px}
+.kbc span{font-size:13px;color:var(--mut)}
+.note{margin-top:20px;padding:12px;border-left:5px solid var(--warn);background:var(--card);border-radius:8px;font-size:14px}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<header><h1>Netgear Technical Support</h1><p>Troubleshooting mind map and KB library</p></header>
+<div class="wrap">
+<h2>1. Pick the customer's problem</h2>
+<div id="cards" class="grid"></div>
+<div id="flow" class="flow"><b>Choose a scenario above.</b> You will be asked what the customer sees (LED colour, devices affected) and taken to the solution and KB article.</div>
+<h2>2. KB article library</h2>
+<input id="srch" type="search" placeholder="Search KB articles (e.g. amber, wifi, refund)">
+<div id="lib" class="grid"></div>
+<h2>3. Official NETGEAR KB links</h2>
+<div id="off" class="grid"></div>
+<div class="note"><b>Note:</b> The KB articles on this page are practice drafts written from public NETGEAR pages and forum answers. Always confirm the exact model first. LED colours and menus change between models. Check against the Movate and official NETGEAR KB before telling a customer.</div>
+</div>
+<script>
+const N=(t,...c)=>({t,c});
+const L=(t,cause,...s)=>({t,cause,s});
+const ESC="Collect model, serial number, firmware version, LED state, WAN type and the steps already tried. Then escalate as per the Movate process.";
+const DATA=N("Start: customer calls about Netgear",
+N("No internet",
+ N("What is the Internet LED?",
+  N("Off (no light)",
+   L("Cable or WAN port problem","The router sees no link on its Internet port.","Check the cable is in the Internet (WAN) port, not a LAN port.","Reseat both ends and swap in a known good cable.","Try a different port on the modem.","Power cycle: modem first, wait 2 minutes, then the router."),
+   L("Modem off or no ISP signal","The modem has no power or no line from the ISP.","Check the modem power and its own lights.","Connect a laptop directly to the modem and test.","If the modem has no internet, ask the customer to call the ISP.")),
+  N("Amber (solid)",
+   L("Power cycle in the right order","Router did not get an IP address from the modem.","Unplug both modem and router.","Power on the modem. Wait until its lights are stable (2 to 3 minutes).","Power on the router. Wait 2 minutes.","Internet LED should turn white or green."),
+   L("Wrong WAN type (DHCP, PPPoE, Static)","The router is set to a connection type the ISP does not use.","Log in at routerlogin.net.","Go to Internet / Basic settings.","Ask the customer which type the ISP gave: DHCP, PPPoE or Static.","For PPPoE, re-enter the ISP username and password. Apply and test."),
+   L("ISP locked to old device (MAC lock)","The ISP only allows one MAC address, such as the old router or the PC.","Test: modem straight to laptop works, but through the router does not.","In Internet settings, use the 'Use this computer MAC address' option (MAC clone).","Power cycle the modem for 5 minutes, then the router.","If it still fails, ask the ISP to register the new router MAC."),
+   L("Double NAT (modem is also a router)","Two routers in a row can block the connection.","Ask for the modem make and model.","Set the ISP modem to bridge mode, or put the Netgear in Access Point mode.","Power cycle both and test."),
+   L("Flashing amber: Traffic Meter limit","On some models, flashing amber means the monthly traffic limit is reached.","Log in and open Advanced > Traffic Meter.","Turn off the limit, or reset the counter.","Apply and check the LED.")),
+  N("White or green (but still no internet)",
+   L("DNS problem","The router is online but names do not resolve.","Ping 8.8.8.8. If it works but websites do not open, it is DNS.","Set DNS to 8.8.8.8 and 1.1.1.1 in the router Internet settings.","Restart the router and the device."),
+   L("Only one device has no internet","The router is fine. The device has a problem.","Test another device on the same Wi-Fi.","Restart the device, forget the Wi-Fi and reconnect.","Check static IP, VPN, proxy and airplane mode.","Run: ipconfig /release, then ipconfig /renew."),
+   L("Wi-Fi connected, no internet (169.254 IP)","The device did not get an IP address from the router.","Check if the IP starts with 169.254.","Forget the network and reconnect.","Check that DHCP is on in the router (LAN setup).","Reboot the router and test by cable."),
+   L("Laptop gets a public IP behind the router","The router is not doing NAT, so the laptop gets the ISP address.","Check the modem cable is in the router Internet port, not a LAN port.","Check the router is not in Access Point or Bridge mode.","Compare the router WAN IP with the laptop IP. If they match, the router is not routing.","Check the laptop has no second adapter, hotspot or direct cable.","If the IP starts with 100.64, it is CGNAT. Confirm with the ISP.")),
+  N("Red or magenta",
+   L("Orbi: magenta ring","Orbi router has no internet.","Check the modem to router cable.","Power cycle modem, then Orbi router.","Check the WAN settings in the Orbi app."),
+   L("Red power LED: hardware or boot fault","The router may be failing to boot or is overheating.","Power off for 1 minute and move to a cool open place.","Try another power adapter if available.","Factory reset once. If red stays, check warranty and replace."))),
+ L("Reset and setup done, still no internet","Settings from setup do not match what the ISP needs.","Check WAN type: DHCP, PPPoE or Static.","Re-enter the PPPoE username and password.","Ask the ISP if a VLAN tag is needed.","Check for a MAC lock and clone the MAC if needed.","Power off the modem for 5 minutes so it drops the old lease.","Check for double NAT. Test the modem alone with a laptop.","Update the firmware after the connection works.")),
+N("Initial setup",
+ L("Standard setup steps","Normal first-time installation.","Power on the modem and wait for stable lights.","Connect the modem to the router Internet port.","Power on the router and wait for the LED to be stable.","Connect the laptop by cable, or join the default Wi-Fi on the label.","Open routerlogin.net or use the Nighthawk or Orbi app.","Run the wizard. Change the Wi-Fi name, Wi-Fi password and admin password.","Check for a firmware update."),
+ L("Setup page does not open","Browser or connection problem.","Use a cable and turn off mobile data or VPN.","Try 192.168.1.1 and a private window.","Check the default gateway in ipconfig and open that address."),
+ L("Admin password lost","Cannot log in to the router.","Try the default (admin / password) if never changed.","Hold the reset button 7 to 10 seconds with a pin.","Wait for the reboot, then run the setup again."),
+ L("App cannot find the router","App and router are not on the same network.","Join the router Wi-Fi.","Turn on Bluetooth and Location for the app.","Update the app. Try routerlogin.net in a browser instead."),
+ L("Orbi satellite will not sync","Satellite is too far or paired wrongly.","Place the satellite in the same room as the router first.","Press the Sync button on the router, then on the satellite within 2 minutes.","Wait for the ring colour. Blue is good, amber is fair, magenta is no link.","Move it to the middle point if the ring is blue."),
+ L("Firmware update failed","Update was interrupted.","Do not power off during an update.","Retry by cable from the Netgear site.","If the power LED flashes, use the firmware recovery tool.")),
+N("Wi-Fi issues",
+ L("Wi-Fi name not showing","Wi-Fi is off or the router has not booted.","Check the Wi-Fi LED and the Wi-Fi on/off button.","Connect by cable and enable 2.4 and 5 GHz in Wireless settings.","Check the Wi-Fi schedule. Check the name is not hidden."),
+ L("Slow speed","Interference, distance or a limit.","Run a wired speed test first. If wired is slow, call the ISP.","Move closer. Try 5 GHz.","Change the channel. Check QoS and Traffic Meter.","Update the firmware."),
+ L("Wi-Fi keeps dropping","Interference, firmware or overheating.","Update the firmware.","Set a fixed channel. Keep the router away from microwaves.","Check that the router is not too hot.","If it persists, replace the unit."),
+ L("Smart device will not connect","Many IoT devices only support 2.4 GHz.","Turn on 2.4 GHz and turn off Smart Connect for setup.","Use a simple password and a name without symbols.","Move the device close to the router during setup.")),
+N("Other router issues",
+ L("Cannot open routerlogin.net","Browser cache or wrong network.","Connect to the router. Use 192.168.1.1.","Clear the cache or use another browser.","Check the default gateway address."),
+ L("Port forwarding or NAT type","Gaming or camera access is blocked.","Give the device a reserved IP.","Add the port forwarding rule. Turn on UPnP if needed.","Check for double NAT."),
+ L("Parental controls blocking sites","A filter or schedule is active.","Open the parental control settings.","Check the device profile, schedule and blocked categories.","Pause the filter and test."),
+ L("Guest network problems","Guest access is off or restricted.","Enable the guest network in the settings.","Check the 'allow access to the local network' option.","Set a new password and reconnect.")),
+N("Subscription",
+ L("Cancel a subscription","Customer wants to stop a paid service such as Armor or Smart Parental Controls.","Verify the customer by email and account details.","Find the subscription and where it was bought (Netgear account, app store or reseller).","Cancel in the same place it was bought.","Confirm the end date and log the case."),
+ L("Refund request","Customer wants money back.","Verify the customer and the purchase date.","Check the refund policy and eligibility in the Movate and Netgear process.","Raise the refund case or transfer to the billing team.","Give the customer the case number and the timeline."),
+ L("Subscription not showing after purchase","Purchase is not linked to the account.","Check the customer is signed in with the right email.","Check the order or payment confirmation.","Re-register the product and sync the subscription.","Escalate to billing if it is still missing."))
+);
+
+const LINKS={
+nm:["What is Double NAT?","https://kb.netgear.com/30186/What-is-Double-NAT"],
+mac:["No internet with new router: MAC spoofing","https://kb.netgear.com/app/answers/detail/a_id/1086"],
+ip:["Check the Internet port IP in router status","https://kb.netgear.com/app/answers/detail/a_id/1098"],
+rst:["Reset the router and reconfigure it","https://kb.netgear.com/app/answers/detail/a_id/9665"]};
+const KBL={"ISP locked":["mac","ip"],"Double NAT":["nm"],"Wrong WAN":["ip"],"Power cycle in":["ip"],"Reset and setup":["ip","mac","rst"],"Red power":["rst"],"Admin password":["rst"]};
+let kb=0;const leaves=[];
+(function ids(n,p){if(n.c)n.c.forEach(x=>ids(x,p.concat(n.t)));else{n.id="KB-"+String(++kb).padStart(3,"0");n.p=p.slice(1);leaves.push(n)}})(DATA,[]);
+function find(n,t){if(n.t===t)return n;if(n.c)for(const x of n.c){const r=find(x,t);if(r)return r}}
+const CARDS=[
+["🌐","No internet","Check the Internet LED","What is the Internet LED?"],
+["🔄","No internet after reset","Setup done, still offline","Reset and setup done, still no internet"],
+["🌍","Public IP on laptop","Laptop gets a public address","Laptop gets a public IP behind the router"],
+["🔀","Double NAT","Modem is also a router","Double NAT (modem is also a router)"],
+["🧰","Initial setup","New router, setup problems","Initial setup"],
+["📶","Wi-Fi issues","Missing, slow or dropping","Wi-Fi issues"],
+["🐌","Slow internet","Speed is low","Slow speed"],
+["🔐","Cannot open router login","routerlogin.net fails","Cannot open routerlogin.net"],
+["🔁","Router fault / red LED","Red power or reboots","Red power LED: hardware or boot fault"],
+["🛰","Orbi satellite","Will not sync","Orbi satellite will not sync"],
+["🔧","Other router issues","Ports, parental, guest","Other router issues"],
+["💳","Subscription","Cancel, refund, missing","Subscription"]];
+const $=id=>document.getElementById(id);
+let stack=[],cur=-1;
+const E=s=>{const d=document.createElement("div");d.textContent=s;return d.innerHTML};
+const cls=t=>/^Off|^Red or|^Only|^Cable/.test(t)?(/^Red/.test(t)?"r":"o"):/Amber|amber/.test(t)?"a":/White|green/.test(t)?"g":"";
+CARDS.forEach((c,i)=>{const b=document.createElement("button");b.className="card";b.id="c"+i;b.innerHTML="<b>"+c[0]+" "+E(c[1])+"</b><span>"+E(c[2])+"</span>";b.onclick=()=>{cur=i;stack=[find(DATA,c[3])];draw()};$("cards").append(b)});
+function links(keys){return keys.length?'<h4>Official NETGEAR KB</h4><ul>'+keys.map(k=>'<li><a href="'+LINKS[k][1]+'" target="_blank" rel="noopener">'+E(LINKS[k][0])+'</a></li>').join("")+'</ul>':""}
+function draw(){
+ document.querySelectorAll(".card").forEach(x=>x.classList.remove("on"));if(cur>=0)$("c"+cur).classList.add("on");
+ const n=stack[stack.length-1];let h='<div class="crumb">'+E(stack.map(x=>x.t).join("  >  "))+'</div>';
+ if(n.c){h+='<div class="q"><b>'+E(n.t.endsWith("?")?n.t:"Which one fits the customer?")+'</b><br>Tap what the customer sees.</div><div class="opts">'+
+  n.c.map((x,i)=>'<button class="opt '+cls(x.t)+'" data-i="'+i+'"><span class="dot"></span><span>'+E(x.t)+'</span></button>').join("")+'</div>'}
+ else{const k=Object.keys(KBL).filter(s=>n.t.startsWith(s)).flatMap(s=>KBL[s]);
+  h+='<div class="sol"><span class="kbid">'+n.id+'</span><h3>'+E(n.t)+'</h3><h4>Cause</h4><p>'+E(n.cause)+'</p><h4>Solution steps</h4><ol>'+n.s.map(x=>'<li>'+E(x)+'</li>').join("")+'</ol>'+links([...new Set(k)])+
+  '<div class="kbbox"><b>KB article '+n.id+'</b><br><b>Title:</b> '+E(n.t)+'<br><b>Category:</b> '+E(n.p.join(" > "))+'<br><b>If not fixed:</b> '+E(ESC)+'</div></div>'}
+ h+='<div class="ctl">'+(stack.length>1?'<button id="bk">Back</button>':"")+'<button class="pri" id="rs">Restart this scenario</button></div>';
+ $("flow").innerHTML=h;
+ $("flow").querySelectorAll(".opt").forEach(b=>b.onclick=()=>{stack.push(n.c[+b.dataset.i]);draw()});
+ if($("bk"))$("bk").onclick=()=>{stack.pop();draw()};
+ $("rs").onclick=()=>{stack=[stack[0]];draw()};
+ $("flow").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"});
+}
+function lib(q){$("lib").innerHTML="";leaves.filter(l=>(l.t+" "+l.p.join(" ")+" "+l.cause).toLowerCase().includes(q)).forEach(l=>{const b=document.createElement("button");b.className="kbc";b.innerHTML='<span class="kbid">'+l.id+'</span><b>'+E(l.t)+'</b><span>'+E(l.p.join(" > "))+'</span>';b.onclick=()=>{cur=-1;stack=[l];draw()};$("lib").append(b)})}
+$("srch").oninput=e=>lib(e.target.value.toLowerCase());lib("");
+Object.values(LINKS).forEach(l=>{const d=document.createElement("div");d.className="kbc";d.innerHTML='<b>'+E(l[0])+'</b><a href="'+l[1]+'" target="_blank" rel="noopener">Open NETGEAR KB</a>';$("off").append(d)});
+</script>
+</body>
+</html>
